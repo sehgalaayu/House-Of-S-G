@@ -2,6 +2,7 @@
 
 import { useState, FormEvent } from "react";
 import styles from "./InquiryForm.module.css";
+import { supabase } from "@/lib/supabase";
 
 const EMAIL = "hello@houseofsandg.com";
 const FORM_ENDPOINT = process.env.NEXT_PUBLIC_FORM_ENDPOINT;
@@ -17,6 +18,22 @@ export default function InquiryForm() {
 
     const form = e.currentTarget;
     const data = new FormData(form);
+
+    // Best-effort permanent record — notification below is what actually
+    // alerts a human, so a Supabase hiccup should never block that.
+    if (supabase) {
+      try {
+        await supabase.from("enquiries").insert({
+          name: data.get("name"),
+          shop: data.get("shop"),
+          email: data.get("email"),
+          interest: data.get("interest"),
+          message: data.get("message"),
+        });
+      } catch {
+        // swallow — the enquiry still gets emailed to us below
+      }
+    }
 
     if (FORM_ENDPOINT) {
       setSubmitting(true);

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Libre_Caslon_Display, Hanken_Grotesk, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
+import { SITE_URL, SITE_NAME, SITE_DESCRIPTION } from "@/lib/site";
 
 const display = Libre_Caslon_Display({
   variable: "--font-display",
@@ -21,9 +22,54 @@ const mono = IBM_Plex_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "House of S&G — Direct from Panipat, India",
-  description:
-    "House of S&G sources and ships premium cotton bedsheets and home linen direct from a Panipat weaving unit to boutique retailers in the UK. No trading house, no middlemen.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default: `${SITE_NAME} — Direct from Panipat, India`,
+    template: `%s — ${SITE_NAME}`,
+  },
+  description: SITE_DESCRIPTION,
+  keywords: [
+    "cotton bedsheets wholesale UK",
+    "Panipat home textile exporter",
+    "cotton percale sateen supplier",
+    "boutique bed linen wholesale",
+    "IEC registered exporter India",
+  ],
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    title: `${SITE_NAME} — Direct from Panipat, India`,
+    description: SITE_DESCRIPTION,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: `${SITE_NAME} — Direct from Panipat, India`,
+    description: SITE_DESCRIPTION,
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: SITE_NAME,
+  url: SITE_URL,
+  description: SITE_DESCRIPTION,
+  address: {
+    "@type": "PostalAddress",
+    addressLocality: "Panipat",
+    addressRegion: "Haryana",
+    addressCountry: "IN",
+  },
+  email: "hello@houseofsandg.com",
+  areaServed: ["GB", "IE", "EU"],
 };
 
 export default function RootLayout({
@@ -33,7 +79,13 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable} ${mono.variable}`}>
-      <body>{children}</body>
+      <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+        {children}
+      </body>
     </html>
   );
 }
