@@ -1,0 +1,83 @@
+.section {
+  background: var(--cotton);
+  padding: clamp(56px, 8vw, 110px) 28px;
+}
+
+.wrap {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(32px, 5vw, 80px);
+}
+
+.labelCol {
+  flex: 0 0 auto;
+  width: 240px;
+  max-width: 100%;
+}
+
+.label {
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--loom);
+  position: sticky;
+  top: 110px;
+}
+
+.copy {
+  flex: 1 1 460px;
+  min-width: 280px;
+  max-width: 660px;
+}
+
+.heading {
+  font-size: clamp(1.8rem, 3.2vw, 2.7rem);
+  line-height: 1.14;
+  margin: 0 0 28px;
+  letter-spacing: -0.01em;
+}
+
+.para {
+  font-size: 1.1rem;
+  line-height: 1.7;
+  color: var(--text-on-light);
+  margin: 0 0 20px;
+}
+
+.para:last-child {
+  margin-bottom: 0;
+}
+
+.people {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  margin-top: 34px;
+  padding-top: 30px;
+  border-top: 1px solid var(--line-on-light);
+}
+
+.person {
+  flex: 1 1 220px;
+}
+
+.personRole {
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--grey-warm);
+  margin-bottom: 6px;
+}
+
+.personName {
+  font-size: 1.15rem;
+  margin-bottom: 4px;
+}
+
+.personDesc {
+  font-size: 0.94rem;
+  line-height: 1.5;
+  color: var(--text-on-light);
+}

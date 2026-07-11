@@ -1,0 +1,74 @@
+.section {
+  background: var(--cotton);
+  padding: clamp(56px, 8vw, 110px) 28px;
+}
+
+.wrap {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(32px, 5vw, 72px);
+}
+
+.copy {
+  flex: 1 1 340px;
+  min-width: 280px;
+}
+
+.label {
+  font-size: 12px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--loom);
+  margin-bottom: 18px;
+}
+
+.heading {
+  font-size: clamp(1.9rem, 3.6vw, 2.9rem);
+  line-height: 1.08;
+  margin: 0 0 22px;
+  letter-spacing: -0.01em;
+}
+
+.lede {
+  font-size: 1.08rem;
+  line-height: 1.65;
+  color: var(--text-on-light);
+  max-width: 38ch;
+  margin: 0 0 34px;
+}
+
+.details {
+  font-size: 13px;
+  line-height: 2;
+  color: var(--ink);
+}
+
+.detailKey {
+  color: var(--grey-warm);
+  display: inline-block;
+  width: 68px;
+}
+
+.whatsapp {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 26px;
+  border: 1px solid var(--line-on-light-strong);
+  padding: 12px 18px;
+  font-size: 13px;
+  color: var(--ink);
+}
+
+.whatsapp:hover {
+  border-color: var(--loom);
+  color: var(--loom);
+}
+
+.formCol {
+  flex: 1 1 380px;
+  min-width: 280px;
+  max-width: 520px;
+}

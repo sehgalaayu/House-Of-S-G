@@ -1,0 +1,22 @@
+.strip {
+  background: var(--cotton-light);
+  border-top: 1px solid var(--line-on-light);
+  border-bottom: 1px solid var(--line-on-light);
+  overflow: hidden;
+  padding: 14px 0;
+}
+
+.track {
+  display: flex;
+  width: max-content;
+  animation: marquee 34s linear infinite;
+  font-size: 12px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink);
+}
+
+.segment {
+  padding: 0 26px;
+  white-space: nowrap;
+}

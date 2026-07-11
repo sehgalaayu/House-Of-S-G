@@ -1,0 +1,23 @@
+.footer {
+  background: var(--ink);
+  color: var(--grey-blue);
+  padding: 44px 28px;
+}
+
+.wrap {
+  max-width: 1240px;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+}
+
+.brand {
+  font-size: 17px;
+  letter-spacing: 0.01em;
+  color: var(--cotton-light);
+}
