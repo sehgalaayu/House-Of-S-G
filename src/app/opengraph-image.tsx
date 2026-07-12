@@ -32,7 +32,7 @@ export default function OgImage() {
           Panipat, India · Direct from the loom
         </div>
         <div style={{ fontSize: 76, color: "#ece7dc", lineHeight: 1.05, display: "flex" }}>
-          House of S&amp;G
+          House of S&G
         </div>
         <div
           style={{
@@ -43,7 +43,7 @@ export default function OgImage() {
             display: "flex",
           }}
         >
-          Cotton bedding, sold by the people who source it.
+          Home textiles, sold by the people who source them.
         </div>
       </div>
     ),
