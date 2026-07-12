@@ -63,6 +63,23 @@
   flex: 1 1 220px;
 }
 
+.personPhoto {
+  width: 148px;
+  height: 148px;
+  border-radius: 50%;
+  object-fit: cover;
+  object-position: 50% 18%;
+  margin-bottom: 18px;
+  filter: grayscale(0.25);
+  display: block;
+  transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.person:hover .personPhoto {
+  transform: scale(1.04);
+  filter: grayscale(0);
+}
+
 .personRole {
   font-size: 11px;
   letter-spacing: 0.12em;

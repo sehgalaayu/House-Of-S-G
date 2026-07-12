@@ -3,6 +3,7 @@
 import { useState } from "react";
 import styles from "./Products.module.css";
 import { products, CATEGORIES, type Category } from "@/data/products";
+import Reveal from "./Reveal";
 
 export default function Products() {
   const [active, setActive] = useState<Category>("bedsheets");
@@ -11,37 +12,45 @@ export default function Products() {
   return (
     <section id="cloth" className={styles.section}>
       <div className={styles.wrap}>
-        <div className={styles.head}>
-          <div>
-            <div className={`font-mono ${styles.label}`}>02 — The cloth</div>
-            <h2 className={`font-display ${styles.heading}`}>
-              Cotton bedding, made to order for boutique retail.
-            </h2>
+        <Reveal>
+          <div className={styles.head}>
+            <div>
+              <div className={`font-mono ${styles.label}`}>02 — The cloth</div>
+              <h2 className={`font-display ${styles.heading}`}>
+                Cotton bedding, made to order for boutique retail.
+              </h2>
+            </div>
+            <p className={`font-mono ${styles.note}`}>
+              Every design ships as a labelled sample first. Minimums are small — this is for
+              shops, not shipping containers.
+            </p>
           </div>
-          <p className={`font-mono ${styles.note}`}>
-            Every design ships as a labelled sample first. Minimums are small — this is for
-            shops, not shipping containers.
-          </p>
-        </div>
 
-        <div className={`font-mono ${styles.tabs}`} role="tablist" aria-label="Product category">
-          {CATEGORIES.map((c) => (
-            <button
-              key={c.key}
-              role="tab"
-              aria-selected={active === c.key}
-              onClick={() => setActive(c.key)}
-              className={`${styles.tab} ${active === c.key ? styles.tabActive : ""}`}
-            >
-              {c.label}
-            </button>
-          ))}
-        </div>
+          <div
+            className={`font-mono ${styles.tabs}`}
+            role="tablist"
+            aria-label="Product category"
+          >
+            {CATEGORIES.map((c) => (
+              <button
+                key={c.key}
+                role="tab"
+                aria-selected={active === c.key}
+                onClick={() => setActive(c.key)}
+                className={`${styles.tab} ${active === c.key ? styles.tabActive : ""}`}
+              >
+                {c.label}
+              </button>
+            ))}
+          </div>
+        </Reveal>
 
         <div className={styles.grid}>
-          {visible.map((p) => (
-            <article
+          {visible.map((p, i) => (
+            <Reveal
               key={p.code}
+              as="article"
+              delay={Math.min(i, 4) * 70}
               className={`${styles.card} ${p.featured ? styles.cardFeatured : ""} ${
                 p.pending ? styles.cardPending : ""
               }`}
@@ -85,7 +94,7 @@ export default function Products() {
                   </p>
                 )}
               </div>
-            </article>
+            </Reveal>
           ))}
         </div>
 

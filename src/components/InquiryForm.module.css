@@ -2,6 +2,7 @@
   background: var(--ink);
   color: var(--cotton-light);
   padding: 40px 34px;
+  animation: fadeUp 0.5s ease both;
 }
 
 .confirmDot {
@@ -53,6 +54,7 @@
   padding: 10px 2px;
   font-size: 1rem;
   color: var(--ink);
+  transition: border-color 0.2s ease;
 }
 
 .input:focus {
@@ -67,6 +69,7 @@
   font-size: 1rem;
   color: var(--ink);
   resize: vertical;
+  transition: border-color 0.2s ease;
 }
 
 .textarea:focus {
@@ -81,12 +84,18 @@
   padding: 15px;
   font-size: 14px;
   letter-spacing: 0.03em;
+  transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
 }
 
-.submit:hover {
+.submit:hover:not(:disabled) {
   background: var(--loom);
   border-color: var(--loom);
   color: #fbfaf6;
+  transform: translateY(-2px);
+}
+
+.submit:active:not(:disabled) {
+  transform: translateY(0);
 }
 
 .submit:disabled {

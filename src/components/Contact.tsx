@@ -1,5 +1,6 @@
 import styles from "./Contact.module.css";
 import InquiryForm from "./InquiryForm";
+import Reveal from "./Reveal";
 
 const WHATSAPP_NUMBER = "918076904213"; // placeholder — replace with real number, digits only, country code first
 const EMAIL = "sehgalaayu@gmail.com";
@@ -11,7 +12,7 @@ export default function Contact() {
   return (
     <section id="inquire" className={styles.section}>
       <div className={styles.wrap}>
-        <div className={styles.copy}>
+        <Reveal className={styles.copy}>
           <div className={`font-mono ${styles.label}`}>
             03 — Start a conversation
           </div>
@@ -63,11 +64,11 @@ export default function Contact() {
               </a>
             </div>
           </div>
-        </div>
+        </Reveal>
 
-        <div className={styles.formCol}>
+        <Reveal delay={120} className={styles.formCol}>
           <InquiryForm />
-        </div>
+        </Reveal>
       </div>
     </section>
   );

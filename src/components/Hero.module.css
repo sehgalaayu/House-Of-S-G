@@ -55,13 +55,20 @@
   font-size: 14px;
   letter-spacing: 0.02em;
   border: 1px solid var(--cotton-light);
-  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease,
+    transform 0.2s ease;
+  display: inline-block;
 }
 
 .primaryBtn:hover {
   background: var(--loom);
   color: #fbfaf6;
   border-color: var(--loom);
+  transform: translateY(-2px);
+}
+
+.primaryBtn:active {
+  transform: translateY(0);
 }
 
 .secondaryBtn {
@@ -69,11 +76,14 @@
   padding: 15px 4px;
   font-size: 14px;
   border-bottom: 1px solid rgba(236, 231, 220, 0.4);
+  display: inline-block;
+  transition: border-color 0.2s ease, transform 0.2s ease;
 }
 
 .secondaryBtn:hover {
   border-color: var(--cotton-light);
   color: var(--cotton-light);
+  transform: translateX(3px);
 }
 
 .visual {
@@ -93,6 +103,11 @@
     ),
     repeating-linear-gradient(0deg, rgba(236, 231, 220, 0.1) 0 1px, transparent 1px 6px);
   border: 1px solid rgba(236, 231, 220, 0.18);
+  transition: border-color 0.3s ease;
+}
+
+.frame:hover {
+  border-color: rgba(236, 231, 220, 0.34);
 }
 
 .frameLabel {
@@ -114,6 +129,12 @@
   padding: 12px 16px 14px;
   box-shadow: 0 10px 24px rgba(0, 0, 0, 0.28);
   min-width: 150px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.frame:hover .ticket {
+  transform: rotate(0deg) translateY(-3px);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.34);
 }
 
 .ticketDot {
