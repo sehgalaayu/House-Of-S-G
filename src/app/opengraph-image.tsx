@@ -43,7 +43,7 @@ export default function OgImage() {
             display: "flex",
           }}
         >
-          Cotton bedsheets, sold by the people who source them.
+          Cotton bedding, sold by the people who source it.
         </div>
       </div>
     ),

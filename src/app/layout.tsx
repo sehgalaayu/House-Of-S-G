@@ -29,7 +29,9 @@ export const metadata: Metadata = {
   },
   description: SITE_DESCRIPTION,
   keywords: [
+    "cotton bedding wholesale UK",
     "cotton bedsheets wholesale UK",
+    "comforter sets wholesale India",
     "Panipat home textile exporter",
     "cotton percale sateen supplier",
     "boutique bed linen wholesale",

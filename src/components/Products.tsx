@@ -1,7 +1,13 @@
+"use client";
+
+import { useState } from "react";
 import styles from "./Products.module.css";
-import { products } from "@/data/products";
+import { products, CATEGORIES, type Category } from "@/data/products";
 
 export default function Products() {
+  const [active, setActive] = useState<Category>("bedsheets");
+  const visible = products.filter((p) => p.category === active);
+
   return (
     <section id="cloth" className={styles.section}>
       <div className={styles.wrap}>
@@ -9,7 +15,7 @@ export default function Products() {
           <div>
             <div className={`font-mono ${styles.label}`}>02 — The cloth</div>
             <h2 className={`font-display ${styles.heading}`}>
-              Six weaves, made to order for boutique retail.
+              Cotton bedding, made to order for boutique retail.
             </h2>
           </div>
           <p className={`font-mono ${styles.note}`}>
@@ -18,9 +24,28 @@ export default function Products() {
           </p>
         </div>
 
+        <div className={`font-mono ${styles.tabs}`} role="tablist" aria-label="Product category">
+          {CATEGORIES.map((c) => (
+            <button
+              key={c.key}
+              role="tab"
+              aria-selected={active === c.key}
+              onClick={() => setActive(c.key)}
+              className={`${styles.tab} ${active === c.key ? styles.tabActive : ""}`}
+            >
+              {c.label}
+            </button>
+          ))}
+        </div>
+
         <div className={styles.grid}>
-          {products.map((p) => (
-            <article key={p.tag} className={styles.card}>
+          {visible.map((p) => (
+            <article
+              key={p.code}
+              className={`${styles.card} ${p.featured ? styles.cardFeatured : ""} ${
+                p.pending ? styles.cardPending : ""
+              }`}
+            >
               <div
                 className={styles.swatch}
                 style={{
@@ -28,7 +53,10 @@ export default function Products() {
                   backgroundImage: `repeating-linear-gradient(90deg, ${p.line} 0 1px, transparent 1px 5px), repeating-linear-gradient(0deg, ${p.line} 0 1px, transparent 1px 5px)`,
                 }}
               >
-                <div className={`font-mono ${styles.tagBadge}`}>{p.tag}</div>
+                <div className={`font-mono ${styles.tagBadge}`}>{p.code}</div>
+                {p.featured && (
+                  <div className={`font-mono ${styles.featuredBadge}`}>Premium line</div>
+                )}
                 <div
                   className={`font-mono ${styles.swatchLabel}`}
                   style={{ color: p.dark ? "var(--grey-blue)" : "rgba(22,34,59,0.55)" }}
@@ -39,26 +67,32 @@ export default function Products() {
               <div className={styles.body}>
                 <div className={styles.titleRow}>
                   <h3 className={`font-display ${styles.name}`}>{p.name}</h3>
-                  <span className={`font-mono ${styles.noteTag}`}>{p.note}</span>
+                  <span className={`font-mono ${styles.priceTag}`}>{p.price}</span>
                 </div>
                 <dl className={`font-mono ${styles.specs}`}>
                   <dt>Fabric</dt>
                   <dd>{p.fabric}</dd>
+                  <dt>Finish</dt>
+                  <dd>{p.finish}</dd>
                   <dt>Count</dt>
-                  <dd>{p.spec}</dd>
-                  <dt>Weave</dt>
-                  <dd>{p.weave}</dd>
-                  <dt>Sizes</dt>
-                  <dd>{p.sizes}</dd>
+                  <dd>{p.countNote}</dd>
+                  <dt>Size</dt>
+                  <dd>{p.size}</dd>
                 </dl>
+                {p.pending && (
+                  <p className={`font-mono ${styles.pendingNote}`}>
+                    Final SKU and pricing being confirmed with our supplier.
+                  </p>
+                )}
               </div>
             </article>
           ))}
         </div>
 
         <p className={`font-mono ${styles.footnote}`}>
-          Specs shown are indicative placeholders — final photography and verified specs supplied
-          on request.
+          Indicative wholesale pricing — final quote depends on order size and finish. Specs
+          marked &ldquo;confirmed spec pending&rdquo; will carry a verified number before you
+          order, never an invented one.
         </p>
       </div>
     </section>
