@@ -76,7 +76,7 @@ export default function Products() {
               <div className={styles.body}>
                 <div className={styles.titleRow}>
                   <h3 className={`font-display ${styles.name}`}>{p.name}</h3>
-                  <span className={`font-mono ${styles.priceTag}`}>{p.price}</span>
+                  <span className={`font-mono ${styles.priceTag}`}>Price on request</span>
                 </div>
                 <dl className={`font-mono ${styles.specs}`}>
                   <dt>Fabric</dt>
@@ -99,9 +99,9 @@ export default function Products() {
         </div>
 
         <p className={`font-mono ${styles.footnote}`}>
-          Indicative wholesale pricing — final quote depends on order size and finish. Specs
-          marked &ldquo;confirmed spec pending&rdquo; will carry a verified number before you
-          order, never an invented one.
+          Pricing is quoted per order, based on size and finish — get in touch for a wholesale
+          quote. Specs marked &ldquo;confirmed spec pending&rdquo; will carry a verified number
+          before you order, never an invented one.
         </p>
       </div>
     </section>
