@@ -28,9 +28,9 @@ export default function Products() {
         <Reveal>
           <div className={styles.head}>
             <div>
-              <div className={`font-mono ${styles.label}`}>02 — The range</div>
+              <div className={`font-mono ${styles.label}`}>02 — The cloth</div>
               <h2 className={`font-display ${styles.heading}`}>
-                Home textiles, made to order for boutique retail.
+                Cotton bedding, made to order for boutique retail.
               </h2>
             </div>
             <p className={`font-mono ${styles.note}`}>

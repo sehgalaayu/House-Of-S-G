@@ -1,7 +1,7 @@
 import styles from "./Marquee.module.css";
 
 const CLAIMS =
-  "bedsheets  ◆  comforters  ◆  blankets  ◆  towels  ◆  bedcovers  ◆  made to order  ◆  woven & finished in panipat  ◆  no middlemen  ◆  iec registered  ◆  samples on request  ◆  ";
+  "100% long-staple cotton  ◆  made to order  ◆  no invented specs  ◆  woven in panipat  ◆  no middlemen  ◆  iec registered  ◆  samples on request  ◆  ";
 
 export default function Marquee() {
   return (

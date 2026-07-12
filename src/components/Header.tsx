@@ -11,7 +11,7 @@ export default function Header() {
       <div className={styles.bar}>
         <a href="#top" className={styles.brand}>
           <span className={`font-display ${styles.brandName}`}>House of S&amp;G</span>
-          <span className={`font-mono ${styles.brandTag}`}>Panipat · Home textiles</span>
+          <span className={`font-mono ${styles.brandTag}`}>Panipat · Cotton textiles</span>
         </a>
 
         <nav aria-label="Primary" className={styles.nav}>
@@ -19,7 +19,7 @@ export default function Header() {
             The story
           </a>
           <a href="#cloth" className={styles.navLink}>
-            The range
+            The cloth
           </a>
           <a href="#inquire" className={styles.cta}>
             Request samples
@@ -44,7 +44,7 @@ export default function Header() {
             The story
           </a>
           <a href="#cloth" onClick={() => setNavOpen(false)} className={styles.mobileLink}>
-            The range
+            The cloth
           </a>
           <a href="#inquire" onClick={() => setNavOpen(false)} className={styles.mobileCta}>
             Request samples

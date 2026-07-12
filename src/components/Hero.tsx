@@ -7,19 +7,19 @@ export default function Hero() {
         <div className={styles.copy}>
           <div className={`font-mono ${styles.eyebrow}`}>Panipat, India · Direct from the loom</div>
           <h1 className={`font-display ${styles.headline}`}>
-            Home textiles, sold by the people who source them.
+            Cotton bedding, sold by the people who source it.
           </h1>
           <p className={styles.lede}>
             House of S&amp;G is two people working directly with a Panipat weaving unit — no
-            trading house, no middlemen. Bedsheets, comforters, blankets, towels, and more, with
-            real specs once confirmed, never an invented one.
+            trading house, no middlemen. Honest cotton, real specs once confirmed, and bedding
+            we&apos;d put on our own beds.
           </p>
           <div className={styles.actions}>
             <a href="#inquire" className={styles.primaryBtn}>
               Request a sample set
             </a>
             <a href="#cloth" className={styles.secondaryBtn}>
-              See the range →
+              See the cloth →
             </a>
           </div>
         </div>

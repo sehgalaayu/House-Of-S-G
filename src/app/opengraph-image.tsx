@@ -43,7 +43,7 @@ export default function OgImage() {
             display: "flex",
           }}
         >
-          Home textiles, sold by the people who source them.
+          Cotton bedding, sold by the people who source it.
         </div>
       </div>
     ),
