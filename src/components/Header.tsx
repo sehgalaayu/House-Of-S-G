@@ -19,7 +19,7 @@ export default function Header() {
             The story
           </a>
           <a href="#cloth" className={styles.navLink}>
-            The cloth
+            Collections
           </a>
           <a href="#inquire" className={styles.cta}>
             Request samples
@@ -44,7 +44,7 @@ export default function Header() {
             The story
           </a>
           <a href="#cloth" onClick={() => setNavOpen(false)} className={styles.mobileLink}>
-            The cloth
+            Collections
           </a>
           <a href="#inquire" onClick={() => setNavOpen(false)} className={styles.mobileCta}>
             Request samples

@@ -1,42 +1,424 @@
-// Curated public subset — what actually renders on the site. Deliberately
-// narrower than the full supplier catalog (see src/data/catalog.ts): only
-// cotton / cotton-blend lines, hand-picked for range and distinctiveness
-// rather than a full wholesale price-list dump. Broadening this list is a
-// content decision, not an engineering one — talk to Aayu/Puneet before
-// adding categories back.
-import { catalog, type Category, type Product } from "./catalog";
+// Curated public catalog — what actually renders on the site. See
+// src/data/catalog.ts for the full 175-SKU internal reference this is
+// drawn from. Adding a new product to the site requires only adding one
+// object to PRODUCTS below.
+//
+// Photography: heroImage/gallery are wired for real product photography,
+// but every entry below is null/[] — House of S&G doesn't yet have
+// authenticated in-house photography for these SKUs. Never fill these
+// with stock/third-party/reference images found elsewhere; only real
+// photos of House of S&G's own product. Until a photo exists for a SKU,
+// its card renders as a text/specimen-swatch card, never a placeholder
+// box implying a missing photo.
 
-export type { Category, Product };
+export type ProductCategory = "bedsheets" | "comforterSets" | "bedcovers";
 
-export const CATEGORIES: { key: Category; label: string }[] = [
-  { key: "cottonBedsheets", label: "Bedsheets" },
-  { key: "comforterSets", label: "Comforter Sets" },
-  { key: "bedcovers", label: "Bedcovers" },
+export type Product = {
+  id: string;
+  sku: string;
+  name: string;
+  category: ProductCategory;
+  collection: string;
+  fabric: string;
+  weave: string;
+  finish: string;
+  size: string;
+  heroImage: string | null;
+  gallery: string[];
+  description: string;
+  availableColours: string[];
+  moq: string;
+  leadTime: string;
+  isFeatured?: boolean;
+};
+
+export const COLLECTIONS: {
+  category: ProductCategory;
+  title: string;
+  description: string;
+  /** The one flagship SKU per collection that gets the larger "Premium line"
+   * card — distinct from isFeatured, which just marks the ten SKUs called
+   * out for site-wide highlighting. */
+  heroId: string;
+}[] = [
+  {
+    category: "bedsheets",
+    title: "Premium Bedsheets",
+    description: "The core line — pure cotton, made to order, in a rotating set of running designs.",
+    heroId: "hsg-002",
+  },
+  {
+    category: "comforterSets",
+    title: "Comforter Sets",
+    description: "Bedsheet, comforter and pillow coordinated as one set.",
+    heroId: "hsg-053",
+  },
+  {
+    category: "bedcovers",
+    title: "Bedcovers",
+    description: "Traditional and jacquard bedcovers, finished for the season.",
+    heroId: "hsg-091",
+  },
 ];
 
-const FEATURED_CODES = [
-  // Cotton Bedsheets — 8 hero designs spanning weave/finish/print variety
-  "HSG-001", // Signature
-  "HSG-002", // Vistara (featured)
-  "HSG-003", // Vintage
-  "HSG-004", // Half Tone
-  "HSG-005", // Florence
-  "HSG-006", // Tencil
-  "HSG-012", // Shahi Gharana
-  "HSG-015", // Super Ombre
+const MOQ = "Made to Order";
+const LEAD_TIME = "On Request";
+const COLOURS = ["Custom colours on request"];
 
-  // Comforter + Bedsheet Sets — 4, cotton/cotton-blend only
-  "HSG-049", // Ankara
-  "HSG-053", // Dream Weaves
-  "HSG-055", // Florence
-  "HSG-065", // Vistara
+export const PRODUCTS: Product[] = [
+  // ---------- PREMIUM BEDSHEETS ----------
+  {
+    id: "hsg-001",
+    sku: "HSG-001",
+    name: "Signature",
+    category: "bedsheets",
+    collection: "Premium Bedsheets",
+    fabric: "Pure cotton",
+    weave: "—",
+    finish: "—",
+    size: "108 × 108",
+    heroImage: null,
+    gallery: [],
+    description: "Our most-requested design — quietly classic pure cotton, made to order.",
+    availableColours: COLOURS,
+    moq: MOQ,
+    leadTime: LEAD_TIME,
+    isFeatured: true,
+  },
+  {
+    id: "hsg-002",
+    sku: "HSG-002",
+    name: "Vistara",
+    category: "bedsheets",
+    collection: "Premium Bedsheets",
+    fabric: "Pure Egyptian cotton",
+    weave: "—",
+    finish: "—",
+    size: "100 × 108",
+    heroImage: null,
+    gallery: [],
+    description: "The house's premium line — pure Egyptian cotton with a soft, lasting hand.",
+    availableColours: COLOURS,
+    moq: MOQ,
+    leadTime: LEAD_TIME,
+    isFeatured: true,
+  },
+  {
+    id: "hsg-003",
+    sku: "HSG-003",
+    name: "Vintage",
+    category: "bedsheets",
+    collection: "Premium Bedsheets",
+    fabric: "Pure cotton",
+    weave: "—",
+    finish: "Washed",
+    size: "108 × 108",
+    heroImage: null,
+    gallery: [],
+    description: "A washed, lived-in finish for buyers who want their cotton to feel settled from day one.",
+    availableColours: COLOURS,
+    moq: MOQ,
+    leadTime: LEAD_TIME,
+    isFeatured: true,
+  },
+  {
+    id: "hsg-004",
+    sku: "HSG-004",
+    name: "Half Tone",
+    category: "bedsheets",
+    collection: "Premium Bedsheets",
+    fabric: "Pure cotton",
+    weave: "Jacquard",
+    finish: "—",
+    size: "108 × 108",
+    heroImage: null,
+    gallery: [],
+    description: "Jacquard-woven pure cotton with a subtle, tonal pattern.",
+    availableColours: COLOURS,
+    moq: MOQ,
+    leadTime: LEAD_TIME,
+    isFeatured: true,
+  },
+  {
+    id: "hsg-005",
+    sku: "HSG-005",
+    name: "Florence",
+    category: "bedsheets",
+    collection: "Premium Bedsheets",
+    fabric: "Cotton brush",
+    weave: "—",
+    finish: "Brushed",
+    size: "90 × 100",
+    heroImage: null,
+    gallery: [],
+    description: "Brushed cotton with a soft hand — cosy without losing its crispness.",
+    availableColours: COLOURS,
+    moq: MOQ,
+    leadTime: LEAD_TIME,
+    isFeatured: true,
+  },
+  {
+    id: "hsg-006",
+    sku: "HSG-006",
+    name: "Tencil",
+    category: "bedsheets",
+    collection: "Premium Bedsheets",
+    fabric: "40s pure cotton",
+    weave: "—",
+    finish: "—",
+    size: "100 × 108",
+    heroImage: null,
+    gallery: [],
+    description: "Fine 40s-count pure cotton, spun for a smoother, denser weave.",
+    availableColours: COLOURS,
+    moq: MOQ,
+    leadTime: LEAD_TIME,
+    isFeatured: true,
+  },
+  {
+    id: "hsg-012",
+    sku: "HSG-012",
+    name: "Shahi Gharana",
+    category: "bedsheets",
+    collection: "Premium Bedsheets",
+    fabric: "Pure cotton",
+    weave: "—",
+    finish: "Digital panel print",
+    size: "108 × 108",
+    heroImage: null,
+    gallery: [],
+    description: "A digital panel print on pure cotton, for buyers after something more graphic.",
+    availableColours: COLOURS,
+    moq: MOQ,
+    leadTime: LEAD_TIME,
+  },
+  {
+    id: "hsg-015",
+    sku: "HSG-015",
+    name: "Super Ombre",
+    category: "bedsheets",
+    collection: "Premium Bedsheets",
+    fabric: "Pure cotton",
+    weave: "—",
+    finish: "—",
+    size: "108 × 108",
+    heroImage: null,
+    gallery: [],
+    description: "A tonal ombre design on pure cotton.",
+    availableColours: COLOURS,
+    moq: MOQ,
+    leadTime: LEAD_TIME,
+  },
 
-  // Bedcovers — 3, cotton/cotton-blend only
-  "HSG-089", // Destiny
-  "HSG-090", // Mallika
-  "HSG-091", // Noor
+  // ---------- COMFORTER SETS ----------
+  {
+    id: "hsg-053",
+    sku: "HSG-053",
+    name: "Dream Weaves",
+    category: "comforterSets",
+    collection: "Comforter Sets",
+    fabric: "Cotton-blend",
+    weave: "Embroidery",
+    finish: "—",
+    size: "100 × 108",
+    heroImage: null,
+    gallery: [],
+    description: "Premium embroidery work across a four-piece set.",
+    availableColours: COLOURS,
+    moq: MOQ,
+    leadTime: LEAD_TIME,
+    isFeatured: true,
+  },
+  {
+    id: "hsg-049",
+    sku: "HSG-049",
+    name: "Ankara",
+    category: "comforterSets",
+    collection: "Comforter Sets",
+    fabric: "Cotton-blend",
+    weave: "Jacquard",
+    finish: "—",
+    size: "100 × 108",
+    heroImage: null,
+    gallery: [],
+    description: "Jacquard-woven four-piece comforter set.",
+    availableColours: COLOURS,
+    moq: MOQ,
+    leadTime: LEAD_TIME,
+    isFeatured: true,
+  },
+  {
+    id: "hsg-056",
+    sku: "HSG-056",
+    name: "Glamour",
+    category: "comforterSets",
+    collection: "Comforter Sets",
+    fabric: "Cotton-blend",
+    weave: "Embroidery",
+    finish: "—",
+    size: "100 × 108",
+    heroImage: null,
+    gallery: [],
+    description: "Premium embroidery, four-piece comforter set.",
+    availableColours: COLOURS,
+    moq: MOQ,
+    leadTime: LEAD_TIME,
+  },
+  {
+    id: "hsg-057",
+    sku: "HSG-057",
+    name: "Kalakriti",
+    category: "comforterSets",
+    collection: "Comforter Sets",
+    fabric: "Cotton-blend",
+    weave: "Embroidery",
+    finish: "—",
+    size: "100 × 108",
+    heroImage: null,
+    gallery: [],
+    description: "Premium embroidery, four-piece comforter set.",
+    availableColours: COLOURS,
+    moq: MOQ,
+    leadTime: LEAD_TIME,
+  },
+  {
+    id: "hsg-055",
+    sku: "HSG-055",
+    name: "Florence",
+    category: "comforterSets",
+    collection: "Comforter Sets",
+    fabric: "Cotton brush",
+    weave: "—",
+    finish: "Brushed",
+    size: "90 × 100",
+    heroImage: null,
+    gallery: [],
+    description: "Brushed cotton comforter set for a softer, cooler-weather line.",
+    availableColours: COLOURS,
+    moq: MOQ,
+    leadTime: LEAD_TIME,
+  },
+  {
+    id: "hsg-065",
+    sku: "HSG-065",
+    name: "Vistara",
+    category: "comforterSets",
+    collection: "Comforter Sets",
+    fabric: "Pure Egyptian cotton",
+    weave: "—",
+    finish: "—",
+    size: "100 × 108",
+    heroImage: null,
+    gallery: [],
+    description: "Four-piece king comforter set in pure Egyptian cotton.",
+    availableColours: COLOURS,
+    moq: MOQ,
+    leadTime: LEAD_TIME,
+  },
+
+  // ---------- BEDCOVERS ----------
+  {
+    id: "hsg-091",
+    sku: "HSG-091",
+    name: "Noor",
+    category: "bedcovers",
+    collection: "Bedcovers",
+    fabric: "Cotton-blend",
+    weave: "Jacquard",
+    finish: "Frill trim",
+    size: "230 × 250 cm",
+    heroImage: null,
+    gallery: [],
+    description: "Premium jacquard bedcover, finished with a frill trim.",
+    availableColours: COLOURS,
+    moq: MOQ,
+    leadTime: LEAD_TIME,
+    isFeatured: true,
+  },
+  {
+    id: "hsg-090",
+    sku: "HSG-090",
+    name: "Mallika",
+    category: "bedcovers",
+    collection: "Bedcovers",
+    fabric: "Cotton-blend",
+    weave: "—",
+    finish: "Frill trim",
+    size: "230 × 250 cm",
+    heroImage: null,
+    gallery: [],
+    description: "Premium bedcover, finished with a frill trim.",
+    availableColours: COLOURS,
+    moq: MOQ,
+    leadTime: LEAD_TIME,
+    isFeatured: true,
+  },
+  {
+    id: "hsg-089",
+    sku: "HSG-089",
+    name: "Destiny",
+    category: "bedcovers",
+    collection: "Bedcovers",
+    fabric: "Cotton-blend",
+    weave: "—",
+    finish: "—",
+    size: "230 × 250 cm",
+    heroImage: null,
+    gallery: [],
+    description: "A Rajwada-style bedcover with a traditional motif.",
+    availableColours: COLOURS,
+    moq: MOQ,
+    leadTime: LEAD_TIME,
+  },
+  {
+    id: "hsg-092",
+    sku: "HSG-092",
+    name: "Ombre",
+    category: "bedcovers",
+    collection: "Bedcovers",
+    fabric: "Cotton-blend",
+    weave: "—",
+    finish: "—",
+    size: "230 × 250 cm",
+    heroImage: null,
+    gallery: [],
+    description: "Premium five-piece bedcover set.",
+    availableColours: COLOURS,
+    moq: MOQ,
+    leadTime: LEAD_TIME,
+  },
+  {
+    id: "hsg-093",
+    sku: "HSG-093",
+    name: "Quilted",
+    category: "bedcovers",
+    collection: "Bedcovers",
+    fabric: "Cotton-blend",
+    weave: "—",
+    finish: "Multi-needle quilting",
+    size: "230 × 250 cm",
+    heroImage: null,
+    gallery: [],
+    description: "Multi-needle quilted bedcover.",
+    availableColours: COLOURS,
+    moq: MOQ,
+    leadTime: LEAD_TIME,
+  },
+  {
+    id: "hsg-094",
+    sku: "HSG-094",
+    name: "Rosie",
+    category: "bedcovers",
+    collection: "Bedcovers",
+    fabric: "Cotton-blend",
+    weave: "—",
+    finish: "Multi-needle ribbon work",
+    size: "230 × 250 cm",
+    heroImage: null,
+    gallery: [],
+    description: "Multi-needle ribbon-work bedcover.",
+    availableColours: COLOURS,
+    moq: MOQ,
+    leadTime: LEAD_TIME,
+  },
 ];
-
-export const products: Product[] = FEATURED_CODES.map(
-  (code) => catalog.find((p) => p.code === code)!
-);

@@ -2,7 +2,9 @@ import Header from "@/components/Header";
 import Hero from "@/components/Hero";
 import Marquee from "@/components/Marquee";
 import Story from "@/components/Story";
-import Products from "@/components/Products";
+import Collections from "@/components/Collections";
+import CatalogueCTA from "@/components/CatalogueCTA";
+import EnquiryCTA from "@/components/EnquiryCTA";
 import Contact from "@/components/Contact";
 import Footer from "@/components/Footer";
 
@@ -17,7 +19,9 @@ export default function Home() {
         <Hero />
         <Marquee />
         <Story />
-        <Products />
+        <Collections />
+        <CatalogueCTA />
+        <EnquiryCTA />
         <Contact />
         <Footer />
       </div>

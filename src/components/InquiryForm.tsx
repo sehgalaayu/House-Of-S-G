@@ -111,6 +111,7 @@ export default function InquiryForm() {
           <option>A sample set</option>
           <option>Wholesale pricing</option>
           <option>A specific weave</option>
+          <option>Full trade catalogue</option>
           <option>Custom / private label</option>
         </select>
       </div>

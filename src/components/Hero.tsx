@@ -19,7 +19,7 @@ export default function Hero() {
               Request a sample set
             </a>
             <a href="#cloth" className={styles.secondaryBtn}>
-              See the cloth →
+              See the collections →
             </a>
           </div>
         </div>
