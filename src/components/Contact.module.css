@@ -67,6 +67,39 @@
   color: var(--loom);
 }
 
+.contactCards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px;
+  margin-top: 34px;
+  padding-top: 30px;
+  border-top: 1px solid var(--line-on-light);
+}
+
+.contactCard {
+  flex: 1 1 200px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.contactRole {
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--grey-warm);
+  margin-bottom: 4px;
+}
+
+.contactLine {
+  font-size: 13px;
+  color: var(--ink);
+}
+
+.contactLine:hover {
+  color: var(--loom);
+}
+
 .formCol {
   flex: 1 1 380px;
   min-width: 280px;
